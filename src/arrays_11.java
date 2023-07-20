@@ -17,10 +17,11 @@ public class arrays_11 {
     public static void buscarSecuencia(int[] arr){
         int inicio=-1;
         int suma=0;
-        for (int i = 0; i < arr.length; i++) {
+        int contador=0;
+        while(contador<MAX){
         int sumaAux=0;
-            if (arr[i]!=0){
-                for (int j = i; j < arr.length; j++) {
+            if (arr[contador]!=0){
+                for (int j = contador; j < arr.length; j++) {
                     if (arr[j]!=0){
                         sumaAux+=arr[j];
                     }else{
@@ -29,9 +30,10 @@ public class arrays_11 {
                 }
                 if (sumaAux>suma){
                     suma = sumaAux;
-                    inicio=i;
+                    inicio=contador;
                 }
             }
+            contador++;
         }
         System.out.println("Suma: "+suma+". Inicio: "+inicio);
     }

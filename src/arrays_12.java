@@ -15,9 +15,10 @@ public class arrays_12 {
     }
     public static void buscarSecuencia(int[] arr){
         int inicio=-1;
-        for (int i = arr.length-1; i > 0; i--) {
-            if (arr[i]!=0){
-                for (int j = i-1; j > 0; j--){
+        int contador=MAX-1;
+        while(contador>=0) {
+            if (arr[contador]!=0){
+                for (int j = contador-1; j > 0; j--){
                     if (arr[j]!=0 && arr[j+1]==0){
                         for (int k = j; k>0; k--) {
                             if (arr[k]!=0 && arr[k-1]==0){
@@ -34,6 +35,7 @@ public class arrays_12 {
                     break;
                 }
             }
+            contador--;
         }
         if (inicio>=0) {
             System.out.println("El inicio de la anteultima secuencia es: " + inicio);

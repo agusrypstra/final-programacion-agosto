@@ -19,20 +19,37 @@ public class arrays_10 {
         buscarSecuencia(n,arr);
     }
     public static void buscarSecuencia(int n,int[] arr){
-        int inicio=-1,fin=-1;
-        for (int i = n; i < arr.length; i++) {
-            if (arr[i] != 0){
-                inicio = i;
-                for (int j = i; j < arr.length; j++) {
-                    if (arr[j+1]==0){
-                        fin = j;
-                        break;
-                    }
-                }
-                break;
-            }
+        int ini=-1;
+        int fin = -1;
+        if (arr[n]!=0){
+            ini = buscarInicio(n,arr);
+            fin = buscarFin(n,arr);
+        }else {
+            System.out.println("No acertaste a ninguna secuencia");
         }
-        System.out.println(inicio + " " + fin);
+        System.out.println("Inicio: " + ini);
+        System.out.println("Final: " + fin);
+
+    }
+    public static int buscarInicio(int n,int[] arr){
+        int ini=n;
+        while(ini>=0){
+            if (arr[ini]==0){
+                return ini+1;
+            }
+            ini--;
+        }
+        return -1;
+    }
+    public static int buscarFin(int n,int[] arr){
+        int fin=n;
+        while(fin<MAX){
+            if (arr[fin]==0){
+                return fin-1;
+            }
+            fin++;
+        }
+        return -1;
     }
     public static int ingresarN(){
         int n=-1;
