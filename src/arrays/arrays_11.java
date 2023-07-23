@@ -1,7 +1,10 @@
+package arrays;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Random;
 
-public class arrays_12 {
-
+public class arrays_11 {
     public static final int MAX = 20;
     public static final int MAXVALOR = 9;
     public static final int MINVALOR = 1;
@@ -15,33 +18,39 @@ public class arrays_12 {
     }
     public static void buscarSecuencia(int[] arr){
         int inicio=-1;
-        int contador=MAX-1;
-        while(contador>=0) {
+        int suma=0;
+        int contador=0;
+        while(contador<MAX){
+        int sumaAux=0;
             if (arr[contador]!=0){
-                for (int j = contador-1; j > 0; j--){
-                    if (arr[j]!=0 && arr[j+1]==0){
-                        for (int k = j; k>0; k--) {
-                            if (arr[k]!=0 && arr[k-1]==0){
-                                inicio = k;
-                                break;
-                            }
-                        }
-                        if (inicio>=0){
-                            break;
-                        }
+                for (int j = contador; j < arr.length; j++) {
+                    if (arr[j]!=0){
+                        sumaAux+=arr[j];
+                    }else{
+                        break;
                     }
                 }
-                if (inicio>=0){
-                    break;
+                if (sumaAux>suma){
+                    suma = sumaAux;
+                    inicio=contador;
                 }
             }
-            contador--;
+            contador++;
         }
-        if (inicio>=0) {
-            System.out.println("El inicio de la anteultima secuencia es: " + inicio);
-        }else {
-            System.out.println("No hay anteultima serie");
+        System.out.println("Suma: "+suma+". Inicio: "+inicio);
+    }
+    public static int ingresarN(){
+        int n=-1;
+        try {
+            do{
+                BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Ingrese un numero entero entre 0 y " + (MAX-1));
+                n = Integer.parseInt(entrada.readLine());
+            }while (0 > n &&n>MAX);
+        }catch (Exception e){
+            System.out.print(e);
         }
+        return n;
     }
     public static void imprimir_arreglo_secuencias_int(int [] arr){
         System.out.print("Arreglo de secuencias int\n|");

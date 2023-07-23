@@ -1,12 +1,10 @@
-/*Hacer un programa que dado un arreglo ordenado
+package arrays;/*Hacer un programa que dado un arreglo ordenado
 creciente de enteros
 de tamaño 10 que se encuentra precargado,
 solicite al usuario un numero
 entero y elimine la primer ocurrencia de numero
 (un número igual) en el
 arreglo (si existe).*/
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 public class arrays_8 {
     public static void main(String[] args){

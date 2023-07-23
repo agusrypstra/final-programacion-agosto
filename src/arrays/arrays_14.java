@@ -1,8 +1,14 @@
+package arrays;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Random;
 
-public class arrays_13 {
+/*Hacer un programa que dado el arreglo definido y precargado, y un número entero
+ingresado por el usuario, copie de forma continua las secuencias de tamaño igual al
+número ingresado en otro arreglo de iguales características e inicializado con 0.
+La copia en este último arreglo deben comenzar desde el principio del mismo.*/
+public class arrays_14 {
     public static final int MAX = 20;
     public static final int MAXVALOR = 9;
     public static final int MINVALOR = 1;
@@ -11,40 +17,53 @@ public class arrays_13 {
     public static void main(String[] args) {
         int[] arr;
         arr = new int[MAX];
+        int[] newArr;
+        newArr = new int[MAX];
         cargar_arreglo_aleatorio_secuencias_int(arr); //REUTILIZAMOS
+        cargar_arreglo_ceros(newArr);
         imprimir_arreglo_secuencias_int(arr);
+        imprimir_arreglo_secuencias_int(newArr);
         int n = ingresarN();
-        procesarArr(arr,n);
-        imprimir_arreglo_secuencias_int(arr); //REUTILIZAMOS
+        procesarArr(arr,newArr,n);
+        imprimir_arreglo_secuencias_int(newArr); //REUTILIZAMOS
     }
-    public static void procesarArr(int[]arr,int n){
-        int inicio;
+    public static void procesarArr(int[]arr,int[]newArr,int n){
+        int contadorI=0;
+        int contadorJ=0;
+        int inicio=-1;
         int fin = -1;
+
+        while (contadorI<MAX){
+            if (arr[contadorI]!=0 && arr[contadorI-1]==0){
+                inicio=contadorI;
+                fin=buscarFin(arr,inicio);
+                if (fin-(inicio-1)==n || ((fin==inicio) && n==1)){
+                    copiarSecuencia(arr,newArr,inicio,fin);
+                }
+            }
+            contadorI++;
+        }
+    }
+    public static void copiarSecuencia(int[]arr,int[] newArr,int inicio,int fin){
+
         int contador=0;
-
-        while(contador<MAX){
-            if (arr[contador]!=0){
-                inicio=contador;
-                for (int i = contador; i < MAX; i++) {
-                    if (arr[i+1]==0){
-                        fin=i;
-                        contador=fin;
-                        break;
-                    }
-                }
-                if ((inicio+n)==fin+1){
-                    eliminar_secuencia(inicio,fin,arr);
-                }
-
+        while (contador<MAX){
+            if (contador>=inicio && contador<=fin){
+                newArr[contador]=arr[contador];
             }
             contador++;
         }
     }
-    public static void eliminar_secuencia(int inicio,int fin,int[] arr){
-        int contador=inicio;
-        while (contador<=fin){
-            arr[contador]=-1;
+    public static int buscarFin(int[] arr,int inicio){
+        int contador = inicio;
+        while (arr[contador+1]!=0){
             contador++;
+        }
+        return contador;
+    }
+    public static void cargar_arreglo_ceros(int[] arr){
+        for (int i = 0; i < MAX; i++) {
+            arr[i]=0;
         }
     }
     public static void imprimir_arreglo_secuencias_int(int [] arr){

@@ -1,3 +1,5 @@
+package arrays;
+
 import java.util.Random;
 public class arrays_ejemplo_7 {
     public static final int MAX = 40;
