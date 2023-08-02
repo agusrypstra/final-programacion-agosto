@@ -1,9 +1,10 @@
 package practice;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
+
 // 		Escribir un programa que permita el ingreso de un número entero por
 //	teclado e imprima el cociente de la división de dicho número con el
 //	número 2, luego con el número 3, y finalmente con el número 4.
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 public class Clase3_Ejercicio1 {
 
 	public static void main(String[] args) {
